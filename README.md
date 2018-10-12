@@ -6,7 +6,7 @@ On March 6th, 2009, NASA launched the [Kepler Telescope](https://www.nasa.gov/mi
 
 ![](./images/transitgif2.gif)
 
-[image source](https://www.cfa.harvard.edu/~avanderb/tutorial/tutorial.html):
+[ source](https://www.cfa.harvard.edu/~avanderb/tutorial/tutorial.html)
 
 
 
@@ -15,7 +15,7 @@ A subset of data from the [NASA Exoplanet Archive](https://exoplanetarchive.ipac
 
 Looking at the koi_pdisposition column in the data,  candidates comprise 50.7% of the sample. A model is feasible given the proportion of candidates to false positives.
 
-![](./images/pie_chart.png)
+![](./images/chart.png)
 
 ###### Potential false positives given by data [code book](https://exoplanetarchive.ipac.caltech.edu/docs/API_kepcandidate_columns.html#pdisposition):
 
@@ -34,7 +34,7 @@ SB2: Target star is a double-lined spectroscopic binary.
 ###### Data Visualization
 Using the second disposition column which identifies confirmed candidates, I looked at the expected parameters for an exoplanet. The plot below shows the transit depth vs. the distance between the planet and the star on the x and y coordinates with point size indicating planet size relative to the star size.  
 
-![](./images/scatter.png)
+![](./images/scatter_plot.png)
 
 Small planets that are close to their star and have high transit depth
 Some planets are far from their star and are smaller relative to their star, yet still have a large transit depth. This is due to the fact that they have a large impact parameter so the observable part of the star during transit is mostly from the limb darkening of the star. The limb darkening is the outer edge of a star that appears dimmer than the center.
@@ -42,7 +42,7 @@ Some planets are far from their star and are smaller relative to their star, yet
 
 ![](./images/impact_parameter.png)
 
-[image source](https://www.paulanthonywilson.com/exoplanets/exoplanet-detection-techniques/the-exoplanet-transit-method/):
+[source](https://www.paulanthonywilson.com/exoplanets/exoplanet-detection-techniques/the-exoplanet-transit-method/)
 
 So as the impact parameter (b) increases, the further the planet is from the center of the star with respect to us.
 Therefore, a large impact parameter means the planet is blocking more of the center of the Star and as such, it's blocking a higher intensity of light.
@@ -53,7 +53,7 @@ Next, I ran a VIF test to remove further collinear columns over a VIF of 10. One
 
 ###### Dataset used for modeling:
 
-![](./images/correlation_plot.png)
+![](./images/corr_plot.png)
 
 |     |   koi_duration  |   koi_depth |   koi_ror |   koi_srho |   koi_teq |   koi_insol |   koi_dor |   koi_num_transits |   koi_slogg |   koi_srad |
 |----:|---------------:|------------:|----------:|-----------:|----------:|------------:|----------:|-------------------:|------------:|-----------:|
@@ -90,21 +90,21 @@ Below is a table of the dependent parameters and their coefficient terms. Most o
 
 Looking at my ROC curve, the model has performed well, with an auc of .86. The area measures discrimination, that is, the ability of the model to correctly classify candidate exoplanets and false positives.
 
-![](./images/plotting_roc_curve.png)
+![](./images/plotting_roc.png)
 
 
-|    |   precision |   recall |
+|    |   Precision |   Recall |
 |---:|------------:|---------:|
 |  1 |       0.733 |    0.981 |
 
+Confusion matrix:
+
+|        |True|False|
+|-------:|---:|----:|
+|Positive|159 |58   |
+|Negative|30  |3    |
+
 The precision and recall are also good. The recall is especially high, which matched my sensitivity goal.
-
-This is further illustrated in the confusion matrix below.
-
-|   |TN|FP|
-|--:|-:|-:|
-| FN|30|58|
-| TP|3|159|
 
 #### Future Work
 For future modeling of this dataset, I would want to focus on a multinomial logistic regression to predict  confirmed exoplanets as well as the candidates and false positives. I would also want to model additional types of false positive parameters included in the dataset. My final goal would be predicting earth-like exoplanets that could potentially sustain life.

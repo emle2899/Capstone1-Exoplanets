@@ -30,7 +30,8 @@ df_kep = df_kep.replace({'koi_pdisposition':change})
 def pie_chart(sizes,labels):
     plt.pie(sizes, labels=labels, autopct='%1.1f%%')
     plt.axis('equal')
-    plt.savefig('pie_chart')
+    plt.tight_layout()
+    plt.savefig('chart')
     plt.show()
 
 def plot_hist(df,title,labels = None):
@@ -41,7 +42,8 @@ def plot_hist(df,title,labels = None):
     ax.set_title(title)
     plt.xlim([0, .25])
     plt.legend()
-    plt.savefig('exoplanet_star_sizes')
+    plt.tight_layout()
+    plt.savefig('exoplanet_hist')
     plt.show()
 
 def plot_scatter(x,y,size,title,xlabel,ylabel,scale = 1e3):
@@ -52,7 +54,8 @@ def plot_scatter(x,y,size,title,xlabel,ylabel,scale = 1e3):
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
-    plt.savefig('scatter')
+    plt.tight_layout()
+    plt.savefig('scatter_plot')
     plt.show()
 
 

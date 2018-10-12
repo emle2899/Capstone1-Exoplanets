@@ -20,8 +20,8 @@ mpl.rcParams.update({
     'font.size'           : 18.0,
     'axes.titlesize'      : 'medium',
     'axes.labelsize'      : 'medium',
-    'xtick.labelsize'     : 'medium',
-    'ytick.labelsize'     : 'medium',
+    'xtick.labelsize'     : 'small',
+    'ytick.labelsize'     : 'small',
     'legend.fontsize'     : 'medium',
 })
 
@@ -138,7 +138,8 @@ def plot_roc(fpr,tpr,title):
     plt.ylabel('True Positive Rate')
     plt.title(title)
     plt.legend()
-    plt.savefig('plotting_roc_curve')
+    plt.tight_layout()
+    plt.savefig('plotting_roc')
     plt.show()
 
 # for plotting and tables:
@@ -159,7 +160,9 @@ def heatplot(X):
     ax = sns.heatmap(X, mask=mask, cmap=cmap, vmax=1.0, center=0,
                 square=True, linewidths=.5, cbar_kws={"shrink": .5})
     ax.set_title('Pearson Correlation Coeficient Matrix')
-    plt.savefig('correlation_plot')
+    plt.tight_layout()
+    plt.savefig('corr_plot')
+    plt.tight_layout()
     plt.show()
 
 def to_dataframe(lst,col = None):
