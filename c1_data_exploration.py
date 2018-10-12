@@ -31,7 +31,7 @@ def pie_chart(sizes,labels):
     plt.pie(sizes, labels=labels, autopct='%1.1f%%')
     plt.axis('equal')
     plt.tight_layout()
-    plt.savefig('chart')
+    # plt.savefig('chart')
     plt.show()
 
 def plot_hist(df,title,labels = None):
@@ -43,22 +43,36 @@ def plot_hist(df,title,labels = None):
     plt.xlim([0, .25])
     plt.legend()
     plt.tight_layout()
-    plt.savefig('exoplanet_hist')
+    # plt.savefig('exoplanet_hist')
     plt.show()
 
-def plot_scatter(x,y,size,title,xlabel,ylabel,scale = 1e3):
+def plot_scatter(x,y,size,title,xlabel,ylabel, labels, color = 'y', scale = 1e3):
     # scale sizes
     s = size*scale
-    c = [cm.Spectral(color) for color in size/max(size)]
-    plt.scatter(x, y, c = c, s = s, alpha = 0.6)
+    plt.scatter(x, y, c = color, s = s, alpha = 0.6,label = labels)
     plt.ticklabel_format(axis='both', style='sci', scilimits=(-2,2))
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.tight_layout()
-    plt.savefig('scatter_plot_color')
+    plt.legend(loc=1, prop={'size': 6})
+    plt.savefig('scatter_plot_colorlegend')
     plt.show()
 
+def color(arr, range):
+    colors = []
+    for i in arr:
+        if i < range[0]:
+            colors.append('red')
+        elif i < range[1]:
+            colors.append('orange')
+        elif i < range[2]:
+            colors.append('pink')
+        elif i < range[3]:
+            colors.append('blue')
+        else:
+            colors.append('purple')
+    return colors
 
 if __name__ == "__main__":
     confirmed = df_kep.query('koi_disposition == "CONFIRMED"')
@@ -78,4 +92,7 @@ if __name__ == "__main__":
     title, xlabel, ylabel = ['Depth VS Dist','Transit Depth','Distance from Star']
     x, y = [confirmed.koi_depth, confirmed.koi_dor]
     size = confirmed.koi_ror
-    plot_scatter(x,y,size,title,xlabel,ylabel)
+    range = [0.1,0.2,0.3,0.4]
+    c = color(size, range)
+    labels2 = np.array([['red < 0.1'],['orange <0.2'],['pink <0.3'],['blue<0.4'],['purple >0.4']])
+    plot_scatter(x,y,size,title,xlabel,ylabel, color = c, labels = labels2)
