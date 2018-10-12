@@ -49,13 +49,14 @@ def plot_hist(df,title,labels = None):
 def plot_scatter(x,y,size,title,xlabel,ylabel,scale = 1e3):
     # scale sizes
     s = size*scale
-    plt.scatter(x, y, c = 'y', s = s, alpha = 0.6)
+    c = [cm.Spectral(color) for color in size/max(size)]
+    plt.scatter(x, y, c = c, s = s, alpha = 0.6)
     plt.ticklabel_format(axis='both', style='sci', scilimits=(-2,2))
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.tight_layout()
-    plt.savefig('scatter_plot')
+    plt.savefig('scatter_plot_color')
     plt.show()
 
 

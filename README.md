@@ -32,9 +32,9 @@ SB1: Target star is a single-lined spectroscopic binary.
 SB2: Target star is a double-lined spectroscopic binary.
 
 ###### Data Visualization
-Using the second disposition column which identifies confirmed candidates, I looked at the expected parameters for an exoplanet. The plot below shows the transit depth vs. the distance between the planet and the star on the x and y coordinates with point size indicating planet size relative to the star size.  
+Using the second disposition column which identifies confirmed candidates, I looked at the expected parameters for an exoplanet. The plot below shows the transit depth vs. the distance between the planet and the star on the x and y coordinates with point size and color indicating planet size relative to the star size.  
 
-![](./images/scatter_plot.png)
+![](./images/scatter_plot_color.png)
 
 Small planets that are close to their star and have high transit depth
 Some planets are far from their star and are smaller relative to their star, yet still have a large transit depth. This is due to the fact that they have a large impact parameter so the observable part of the star during transit is mostly from the limb darkening of the star. The limb darkening is the outer edge of a star that appears dimmer than the center.
