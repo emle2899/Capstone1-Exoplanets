@@ -80,7 +80,7 @@ Next, I ran a VIF test to remove further collinear columns over a VIF of 10. One
 The test data was trained with a logistic regression model since the target was binary. My goal was to maximize the recall of my model because it was more important to capture all potential exoplanet candidates even if that meant that some false positives might also be captured. As such, the goal of the model was to have a higher sensitivity over specificity.
 
 ###### Coefficients
-Below is a table of the dependent parameters and their coefficient terms. Most of the parameters have a significant correlation.
+Below is a table of the dependent parameters and their coefficient terms. Most of the parameters have negative coefficient terms.
 
 |    |   duration |   depth |   relative_size |   stellar_density |   temp_planet |   insolation_flux |   num_transits |   stellar_surface_gravity |   stellar_radius |
 |---:|-----------:|--------:|----------------:|------------------:|--------------:|------------------:|---------------:|--------------------------:|-----------------:|
