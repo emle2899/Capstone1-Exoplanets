@@ -77,10 +77,10 @@ Next, I ran a VIF test to remove further collinear columns over a VIF of 10. One
 
 #### Model
 
-The test data was trained with a logistic regression model since the target was binary. My goal was to maximize the recall of my model because it was more important to capture all potential exoplanet candidates even if that meant that some false positives might also be captured. As such, I built a model with higher sensitivity instead of specificity.
+The test data was trained with a logistic regression model since the target was binary. My goal was to maximize the recall of my model because it was more important to capture all potential exoplanet candidates even if that meant that some false positives might also be captured. As such, the goal of the model was to have a higher sensitivity over specificity.
 
 ###### Coefficients
-Below is a table of the dependent parameters and their coefficient terms. Most of the parameters have a high negative correlation.
+Below is a table of the dependent parameters and their coefficient terms. Most of the parameters have a significant correlation.
 
 |    |   duration |   depth |   relative_size |   stellar_density |   temp_planet |   insolation_flux |   num_transits |   stellar_surface_gravity |   stellar_radius |
 |---:|-----------:|--------:|----------------:|------------------:|--------------:|------------------:|---------------:|--------------------------:|-----------------:|
@@ -88,7 +88,7 @@ Below is a table of the dependent parameters and their coefficient terms. Most o
 
 ###### Model Validity
 
-Looking at my ROC curve, the model has performed well, with an auc of .86. The area measures discrimination, that is, the ability of the model to correctly classify candidate exoplanets and false positives.
+Looking at my ROC curve, the model performed well, with an auc of .86. The area measures discrimination, that is, the ability of the model to correctly classify candidate exoplanets and false positives.
 
 ![](./images/plotting_roc.png)
 
@@ -104,7 +104,7 @@ Confusion matrix:
 |Positive|159 |58   |
 |Negative|30  |3    |
 
-The precision and recall are also good. The recall is especially high, which matched my sensitivity goal.
+The precision and recall were also good. The recall was especially high, indicating that the model successfully minimized the number of false negatives.
 
 #### Future Work
 For future modeling of this dataset, I would want to focus on a multinomial logistic regression to predict  confirmed exoplanets as well as the candidates and false positives. I would also want to model additional types of false positive parameters included in the dataset. My final goal would be predicting earth-like exoplanets that could potentially sustain life.
